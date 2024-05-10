@@ -1,0 +1,87 @@
+<style>.registration-form-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.registration-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.registration-form table {
+    width: 100%;
+}
+
+.registration-form table tr {
+    margin-bottom: 10px;
+}
+
+.registration-form table td {
+    padding: 5px;
+}
+
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+    padding: 5px 10px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.additional-info {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.additional-info a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.additional-info a:hover {
+    text-decoration: underline;
+}
+</style>
+{% extends "magasin/base.html" %}
+{% block content %}
+    <center><h2>S'inscrire</h2></center>
+    <div class="registration-form-container">
+        <form method="post" class="registration-form">
+            {% csrf_token %}
+            <table>
+                {% for field in form %}
+                    <tr>
+                        <td>{{ field.label_tag }}</td>
+                        <td>{{ field }}</td>
+                    </tr>
+                    {% for error in field.errors %}
+                        <tr><td></td><td class="alert alert-danger">{{ error }}</td></tr>
+                    {% endfor %}
+                {% endfor %}
+            </table>
+            <button type="submit" class="btn btn-primary">S'inscrire</button>
+        </form>
+    </div>
+    <div class="additional-info">
+        <small>
+            Déjà inscrit.e? <a href="{% url 'login' %}">Se connecter</a>
+        </small>
+    </div>
+{% endblock %}

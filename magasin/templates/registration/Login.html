@@ -1,0 +1,86 @@
+
+<style >.login-form-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.additional-info {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.additional-info a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.additional-info a:hover {
+    text-decoration: underline;
+}
+</style>
+{% extends "magasin/base.html" %}
+{% block content %}
+    <center><h2>Se connecter</h2></center>
+    <div class="login-form-container">
+        <form method="post" class="login-form">
+            {% csrf_token %}
+            {% if form.non_field_errors %}
+                {% for error in form.non_field_errors %}
+                    <p class="alert alert-danger">{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+            <div class="form-group">
+                {% for field in form %}
+                    <label>{{ field.label_tag }}</label>
+                    {{ field }}
+                {% endfor %}
+            </div>
+            <button type="submit" class="btn btn-primary">Se connecter</button>
+        </form>
+    </div>
+    <div class="additional-info">
+        <small>
+            Pas encore inscrit.e? <a href="{% url 'register' %}">S'inscrire</a><br>
+            Mot de passe oublié ? <a href="#">Renouveler mon mot de passe</a>
+        </small>
+    </div>
+{% endblock %}

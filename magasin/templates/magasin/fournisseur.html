@@ -1,0 +1,106 @@
+{% extends 'magasin/base.html' %}
+{% block content %}
+<style>
+    .container {
+        width: 80%;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        margin-bottom: 20px;
+        font-size: 24px;
+        color: #333333;
+    }
+
+    form {
+        margin-bottom: 20px;
+    }
+
+    input[type="text"],
+    button {
+        padding: 10px;
+        margin-right: 10px;
+        border-radius: 5px;
+        border: 1px solid #cccccc;
+    }
+
+    button {
+        background-color: #007bff;
+        color: #ffffff;
+        cursor: pointer;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    ul li {
+        margin-bottom: 10px;
+        padding: 10px;
+        background-color: #f2f2f2;
+        border-radius: 5px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #dddddd;
+    }
+
+    th {
+        background-color: #007bff;
+        color: #ffffff;
+    }
+
+    td {
+        background-color: #ffffff;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+</style>
+
+<div class="container">
+    <h1>Ajouter un fournisseur</h1>
+    <form method="POST" action="{% url 'nouveauFour' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Enregistrer</button>
+    </form>
+
+    <h1>Liste des fournisseurs</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Adresse</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for fournisseur in fournisseurs %}
+                <tr>
+                    <td>{{ fournisseur.nom }}</td>
+                    <td>{{ fournisseur.adresse }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="2">Aucun fournisseur disponible.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

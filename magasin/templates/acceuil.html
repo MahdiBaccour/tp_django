@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8" />
+    <title>Création d'un design étape par étape - Etape n°1 : Le code xhtml</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+            transition: background-color 0.5s ease;
+        }
+
+        #conteneur {
+            width: 80%;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.5s ease;
+        }
+
+        #header {
+            margin-bottom: 20px;
+            text-align: center;
+            transition: color 0.3s ease;
+        }
+
+        #header a {
+            text-decoration: none;
+            color: #333;
+            font-size: 24px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        #menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+
+        #menu li {
+            display: inline-block;
+            margin-right: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        #menu li a {
+            text-decoration: none;
+            color: #666;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        #menu li a:hover {
+            color: #007bff;
+        }
+
+        #menu li:hover {
+            transform: scale(1.1);
+        }
+
+        #contenu {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        #footer {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            margin-top: 20px;
+            transition: color 0.3s ease;
+        }
+
+        #footer a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        #footer a:hover {
+            color: #007bff;
+        }
+
+        #conteneur:hover {
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        #header:hover {
+            color: #007bff;
+        }
+
+        body:hover {
+            background-color: #ebebeb;
+        }
+    </style>
+</head>
+<body>
+    <div id="conteneur">
+        <h1 id="header"><a href="#">Veuillez Vous Choisir Votre Application</a></h1>
+        <nav>
+            <ul id="menu">
+                <li><a href="/magasin/">Application n°1 : Magasin</a></li>
+                <li><a href="/jeux/">Application n°2 : jeux</a></li>
+                <li><a href="/blog/">Application n°3: poster</a></li>
+            </ul>
+        </nav>
+        <p id="footer">Base de Mon Site Web Django</p>
+    </div>
+</body>
+</html>
