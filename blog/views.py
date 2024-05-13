@@ -10,7 +10,7 @@ class ListePoste(ListView):
 class Detailposte(DetailView):
     model = Post
     template_name = 'blog/detail_poste.html'
-    context_object_name = 'produit'
+    context_object_name = 'post'
 class CreerPoste(CreateView):
     model = Post
     template_name = 'blog/creer_poste.html'
